@@ -1,11 +1,20 @@
 # Resolve the problem!!
 import string
+from random import randrange
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 
 def generate_password():
-    # Start coding here
+    length = randrange(7, 15)   # password length [8,16]
+    secure_pass = ''
+    while length >= 0:
+        secure_pass += chr(randrange(33, 126))  # random character
+        length -= 1
+
+    if not validate(secure_pass):
+        return generate_password()
+    return secure_pass
 
 
 def validate(password):
